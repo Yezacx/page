@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>分页</title>
+    <link rel="stylesheet" href="./css/pager2.css">
+</head>
+<body>
+<div class="contentBox">
+    <div id="content"></div>
+    <div id="page"></div>
+</div>
+<script src="./js/jquery1.42.min.js"></script>
+<script src="./js/pager2.js"></script>
+<script>
+    var pcount = 78; /*总条数*/
+    var pindex = 1; /*当前页数*/
+    var psize = 10; /*每页条数*/
+    var content="";//当前页数对应的内容
+    function recommend(){
+        var array = [//模拟后台数据
+            {content:"我是第1页内容",page:1},
+            {content:"我是第2页内容",page:2},
+            {content:"我是第3页内容",page:3},
+            {content:"我是第4页内容",page:4},
+            {content:"我是第5页内容",page:5},
+            {content:"我是第6页内容",page:6},
+            {content:"我是第7页内容",page:7},
+            {content:"我是第8页内容",page:8}
+        ];
+        $.each(array, function (index,i) {
+            if(index==pindex-1){
+                content = i.content;
+                return false;
+            }
+        });
+        $("#content").html(content);
+        $("#page").html(pagination(pcount, pindex, psize, "recommend"));
+    }
+    recommend();
+
+
+</script>
+</body>
+</html>
